@@ -1,4 +1,8 @@
-.logo-container {
+body {
+  background-color: beige;
+}
+
+.container {
   display: flex;
   justify-content: center;
 }
