@@ -1,0 +1,11 @@
+body {
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+  .btn  {
+    width: 120px;
+    height: 45px;
+    font-weight: bold;
+    color: azure;
+    background-color: rgb(12, 145, 136);
+} 
