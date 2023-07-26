@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quadro Kanban</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="kanban-board">
+        <div class="column">
+            <h2>A fazer</h2>
+            <ul id="todo-column" class="task-list" ondrop="drop(event)" ondragover="allowDrop(event)"></ul>
+        </div>
+        <div class="column">
+            <h2>Em progresso</h2>
+            <ul id="in-progress-column" class="task-list" ondrop="drop(event)" ondragover="allowDrop(event)"></ul>
+        </div>
+        <div class="column">
+            <h2>Concluído</h2>
+            <ul id="done-column" class="task-list" ondrop="drop(event)" ondragover="allowDrop(event)"></ul>
+        </div>
+    </div>
+    <script>
+        // Recupera os dados do localStorage
+        var taskName = localStorage.getItem('taskName');
+        var taskDescription = localStorage.getItem('taskDescription');
+
+        // Adiciona a nova tarefa se os dados existirem
+        if (taskName && taskDescription) {
+            var todoColumn = document.getElementById('todo-column');
+
+            var newTask = document.createElement('li');
+            newTask.className = 'task';
+            newTask.draggable = true;
+            newTask.addEventListener('dragstart', drag);
+
+            newTask.innerHTML = `<strong>${taskName}</strong><br>${taskDescription.replace(/\n/g, '<br>')}`;
+
+            todoColumn.appendChild(newTask);
+
+            // Remove os dados do localStorage após adicionar a tarefa
+            localStorage.removeItem('taskName');
+            localStorage.removeItem('taskDescription');
+        }
+    </script>
+</body>
+</html>
+
+
+
